@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Probe documentation
+    url: https://github.com/TylerAkins/forever-quest-probe#readme
+    about: Read capture and export instructions before filing.

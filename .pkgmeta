@@ -1,0 +1,10 @@
+package-as: ForeverQuestProbe
+ignore:
+  - tests
+  - tools
+  - .github
+  - .gitignore
+  - AGENTS.md
+  - FINDINGS.md
+  - TEST_PLAN.md
+  - VERSION

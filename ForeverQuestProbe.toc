@@ -1,0 +1,19 @@
+## Interface: 16001
+## Title: Forever Quest Probe
+## Notes: Developer diagnostics for Blizzard quest pins, quest state, and waypoint APIs on World of Warcraft: Forever.
+## Author: Tyler Akins
+## Version: @project-version@
+## X-License: GPL-3.0-or-later
+## X-Category: Quests
+## X-Website: https://github.com/TylerAkins/forever-quest-probe
+## X-Source: https://github.com/TylerAkins/forever-quest-probe
+## X-Issues: https://github.com/TylerAkins/forever-quest-probe/issues
+## SavedVariables: ForeverQuestProbeDB
+
+Core.lua
+Capabilities.lua
+QuestScanner.lua
+PinScanner.lua
+Correlator.lua
+Serializer.lua
+UI.lua

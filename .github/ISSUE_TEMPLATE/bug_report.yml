@@ -1,0 +1,14 @@
+name: Probe result or bug
+description: Report an in-game Forever diagnostic result.
+body:
+  - type: input
+    id: build
+    attributes: { label: Forever client build }
+    validations: { required: true }
+  - type: textarea
+    id: scenario
+    attributes: { label: Scenario and map state }
+    validations: { required: true }
+  - type: textarea
+    id: export
+    attributes: { label: Relevant /fqp-probe export }
