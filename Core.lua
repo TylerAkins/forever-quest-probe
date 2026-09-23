@@ -49,7 +49,7 @@ function ns.CreateCapture(label)
         client = clientInfo(), viewedMapID = ns.GetViewedMapID(), playerMapID = ns.GetPlayerMapID(),
         selectedQuestID = ns.GetSelectedQuestID(), trackedQuestIDs = ns.GetTrackedQuestIDs(),
         superTrackedQuestID = ns.GetSuperTrackedQuestID(), capabilities = capabilities, quests = quests,
-        pins = pins, warnings = {}, truncation = pins.truncation,
+        pins = pins, selectedPin = ns.ScanSelectedPin(), warnings = {}, truncation = pins.truncation,
     }
     capture.correlations = ns.Correlate(quests, pins, capture.warnings)
     ns.DB.captures[#ns.DB.captures + 1] = capture
@@ -62,7 +62,7 @@ function ns.FindCapture(id)
 end
 
 local function showHelp()
-    printMessage("help, status, apis, pins, quests, capture <label>, list, show <number>, export <number>, clear [confirm]")
+    printMessage("help, status, apis, pins, selected-pin, quests, capture <label>, list, show <number>, export <number>, clear [confirm]")
 end
 
 local function handleCommand(input)
@@ -72,6 +72,7 @@ local function handleCommand(input)
     elseif command == "status" then printMessage(string.format("v%s | map=%s | pins=%d | captures=%d", ns.version, tostring(ns.GetViewedMapID()), #ns.ScanPins().pins, #ns.DB.captures))
     elseif command == "apis" then local r = ns.DetectCapabilities(); printMessage(string.format("%d callable, %d tested", r.callableCount, r.testedCount))
     elseif command == "pins" then local r = ns.ScanPins(); printMessage(string.format("%d pins%s", #r.pins, r.warning and "; " .. r.warning or ""))
+    elseif command == "selected-pin" then local r = ns.ScanSelectedPin(); if r.pin then printMessage("selected pin: " .. (r.pin.questID and "quest " .. r.pin.questID.value or "no explicit quest ID") .. (r.pin.x and ", coordinates exposed" or ", coordinates unavailable")) else printMessage(r.warning or "No safely readable selected-pin data.") end
     elseif command == "quests" then local r = ns.ScanQuests(); printMessage(string.format("%d quest entries", #r.entries))
     elseif command == "capture" then local capture, err = ns.CreateCapture(rest); printMessage(capture and ("saved capture #" .. capture.id) or err)
     elseif command == "list" then for _, c in ipairs(ns.DB.captures) do printMessage("#" .. c.id .. " " .. c.label) end

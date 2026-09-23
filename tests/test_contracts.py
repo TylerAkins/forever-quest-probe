@@ -19,7 +19,7 @@ class ContractTests(unittest.TestCase):
         core = (ROOT / "Core.lua").read_text()
         serializer = (ROOT / "Serializer.lua").read_text()
         capabilities = (ROOT / "Capabilities.lua").read_text()
-        for command in ("help", "status", "apis", "pins", "quests", "capture", "list", "show", "export", "clear"):
+        for command in ("help", "status", "apis", "pins", "selected-pin", "quests", "capture", "list", "show", "export", "clear"):
             self.assertIn('command == "' + command + '"', core)
         self.assertIn('rest:lower() == "confirm"', core)
         self.assertIn("<cycle>", serializer); self.assertIn("<max-depth>", serializer); self.assertIn("<unsupported:", serializer)
