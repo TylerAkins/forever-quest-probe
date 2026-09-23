@@ -11,5 +11,12 @@ jobs:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with: { python-version: '3.12' }
+      - run: python3 -m pip install -r tests/requirements.txt
       - run: python3 -m unittest discover -s tests
+      - run: |
+          python3 tools/compile_addon.py
+          test -f .compiled/ForeverQuestProbe/ForeverQuestProbe.toc
+          test -f .compiled/ForeverQuestProbe/Core.lua
+          test ! -e .compiled/ForeverQuestProbe/tests
+          test ! -e .compiled/ForeverQuestProbe/tools
       - run: python3 tools/compile_addon.py --dry-run

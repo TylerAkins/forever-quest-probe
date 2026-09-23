@@ -3,12 +3,18 @@ description: Report an in-game Forever diagnostic result.
 body:
   - type: input
     id: build
-    attributes: { label: Forever client build }
+    attributes: { label: Forever client version and build }
     validations: { required: true }
   - type: textarea
     id: scenario
-    attributes: { label: Scenario and map state }
+    attributes: { label: Scenario, whether the world map was open, and current viewed map }
     validations: { required: true }
   - type: textarea
     id: export
-    attributes: { label: Relevant /fqp-probe export }
+    attributes: { label: Probe version, capture label and ID, and relevant /fqp-probe export, description: Do not attach unrelated SavedVariables or account information. }
+  - type: textarea
+    id: expected
+    attributes: { label: Expected behavior }
+  - type: textarea
+    id: actual
+    attributes: { label: Actual behavior and Lua error text }
